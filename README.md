@@ -1,13 +1,10 @@
-# Airline Delay Analysis (SQL)
+## Airline Delay Analysis (SQL • Excel • Power BI)
 
 ## Project Overview
-This project analyzes airline flight delay data using SQL to identify patterns in airline performance, airport delays, and operational issues.  
-The dataset contains approximately 1.9 million flight records including airline codes, airports, departure delays, arrival delays, and delay causes.
+This project analyzes airline flight delay data to identify patterns in airline performance, airport congestion, and delay causes.
+The analysis was conducted using SQL for data exploration, and the results are later visualized in Excel and Power BI.
 
-The goal of this project is to understand:
-- Which airlines experience the highest delays
-- Which airports contribute most to delays
-- What operational factors cause delays
+Dataset contains ~1.9 million flight records including flight times, delays, airline codes, airports, and delay causes.
 
 ## SQL-based analysis of airline delay data to identify operational patterns and delay causes.
 
