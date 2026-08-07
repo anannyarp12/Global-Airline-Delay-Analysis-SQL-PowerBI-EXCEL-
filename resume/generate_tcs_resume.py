@@ -57,15 +57,15 @@ def build():
         )
     )
 
-    story.append(Paragraph("CAREER OBJECTIVE", st["Section"]))
+    story.append(Paragraph("SUMMARY", st["Section"]))
     story.append(rule())
     story.append(
         Paragraph(
-            "B.Sc. Statistics (Honours) fresher seeking an entry-level role at TCS. Skilled in SQL, "
-            "Python (working knowledge), Excel, and Power BI, with strong statistical foundations, "
-            "problem-solving ability, and clear English communication. Eager to contribute to data "
-            "analysis, reporting, and technology-driven business solutions while learning in a "
-            "structured corporate environment.",
+            "B.Sc. Statistics (Honours) graduate with hands-on experience turning large datasets into "
+            "actionable business insight using SQL, Excel, and Power BI — including revenue trends, "
+            "customer behavior patterns, and performance dashboards. Interested in applying analytical "
+            "rigor to growth and marketing problems: understanding user behavior, campaign performance, "
+            "and what drives retention and monetization.",
             st["Body"],
         )
     )
@@ -138,16 +138,6 @@ def build():
         )
     )
 
-    story.append(Paragraph("WORK EXPERIENCE", st["Section"]))
-    story.append(rule())
-    story.append(Paragraph("Guide, Translator and Operations Coordinator", st["RoleTitle"]))
-    story.append(Paragraph("Neora Valley Jungle Camp, Kolakham, Kalimpong | 1 Year", st["OrgMeta"]))
-    for b in [
-        "Handled communication with international guests and coordinated day-to-day operations under pressure",
-        "Improved planning, documentation, and problem-solving skills transferable to client and team environments",
-    ]:
-        story.append(bullet(b, st))
-
     story.append(Paragraph("CERTIFICATIONS", st["Section"]))
     story.append(rule())
     story.append(Paragraph("• IBM – Introduction to Data Analytics", st["Line"]))
@@ -157,7 +147,7 @@ def build():
     story.append(rule())
     story.append(
         Paragraph(
-            "• Represented school in the men's chess competition in Class 10, building focus and strategic thinking",
+            "• Represented school in the chess competition in Class 10, building focus and strategic thinking",
             st["Line"],
         )
     )
