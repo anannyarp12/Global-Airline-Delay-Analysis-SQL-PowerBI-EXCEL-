@@ -1,6 +1,6 @@
 # Ananya Rai Paul — Resume (Turing Delivery Data Analyst)
 
-anannyaraipaul@gmail.com | linkedin.com/in/annyarp | github.com/anannyarp12 | +91 9933491546
+anannyaraipaul@gmail.com | linkedin.com/in/annyarp
 
 ## Professional Summary
 B.Sc. Statistics (Honours) graduate and fresher seeking a Delivery Data Analyst role. Strong critical thinking, problem-solving, and English communication skills, with hands-on experience cleaning data, writing SQL, building analyses, and documenting clear technical explanations. Working knowledge of Python for data tasks. Comfortable evaluating outputs, comparing options with detailed rationales, and collaborating remotely in a full-time setup.
