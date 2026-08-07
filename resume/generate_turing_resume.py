@@ -52,8 +52,7 @@ def build():
     story.append(Paragraph("ANANYA RAI PAUL", st["Name"]))
     story.append(
         Paragraph(
-            "anannyaraipaul@gmail.com | linkedin.com/in/annyarp | github.com/anannyarp12 | +91 9933491546<br/>"
-            "Remote-ready | Available for 4-hour overlap with US time zones | Full-time",
+            "anannyaraipaul@gmail.com | linkedin.com/in/annyarp | github.com/anannyarp12 | +91 9933491546",
             st["Contact"],
         )
     )
