@@ -5,6 +5,7 @@ from pathlib import Path
 
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.opc.constants import RELATIONSHIP_TYPE as RT
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 from docx.shared import Inches, Pt, RGBColor, Twips
@@ -118,7 +119,14 @@ def build_pdf() -> None:
     story.append(Paragraph("ANANYA RAI PAUL", styles["name"]))
     story.append(
         Paragraph(
-            "anannyaraipaul@gmail.com | linkedin.com/in/annyarp | github.com/anannyarp12",
+            '<link href="mailto:anannyaraipaul@gmail.com">'
+            "<u>anannyaraipaul@gmail.com</u></link>"
+            " | "
+            '<link href="https://www.linkedin.com/in/annyarp">'
+            "<u>linkedin.com/in/annyarp</u></link>"
+            " | "
+            '<link href="https://github.com/anannyarp12">'
+            "<u>github.com/anannyarp12</u></link>",
             styles["contact"],
         )
     )
@@ -217,19 +225,6 @@ def build_pdf() -> None:
             styles["edu_sub"],
         )
     )
-    story.append(Spacer(1, 2))
-    story.append(
-        Paragraph(
-            "St. Joseph's High School — ISC Class XII (2021)",
-            styles["edu_title"],
-        )
-    )
-    story.append(
-        Paragraph(
-            "English, Mathematics, Physics, Chemistry | Percentage: 74%",
-            styles["edu_sub"],
-        )
-    )
 
     story.append(Paragraph("CERTIFICATIONS &amp; LEARNING", styles["section"]))
     story.append(
@@ -265,6 +260,42 @@ def add_horizontal_line(paragraph):
     pPr.append(pBdr)
 
 
+def add_hyperlink(paragraph, text: str, url: str, size=10, color=(37, 99, 235)):
+    """Add a clickable hyperlink run to a python-docx paragraph."""
+    part = paragraph.part
+    r_id = part.relate_to(url, RT.HYPERLINK, is_external=True)
+    hyperlink = OxmlElement("w:hyperlink")
+    hyperlink.set(qn("r:id"), r_id)
+
+    new_run = OxmlElement("w:r")
+    rPr = OxmlElement("w:rPr")
+
+    color_el = OxmlElement("w:color")
+    color_el.set(qn("w:val"), "%02X%02X%02X" % color)
+    rPr.append(color_el)
+
+    u = OxmlElement("w:u")
+    u.set(qn("w:val"), "single")
+    rPr.append(u)
+
+    sz = OxmlElement("w:sz")
+    sz.set(qn("w:val"), str(size * 2))
+    rPr.append(sz)
+
+    rFonts = OxmlElement("w:rFonts")
+    rFonts.set(qn("w:ascii"), "Calibri")
+    rFonts.set(qn("w:hAnsi"), "Calibri")
+    rPr.append(rFonts)
+
+    new_run.append(rPr)
+    text_el = OxmlElement("w:t")
+    text_el.text = text
+    new_run.append(text_el)
+    hyperlink.append(new_run)
+    paragraph._p.append(hyperlink)
+    return hyperlink
+
+
 def build_docx() -> None:
     document = Document()
     for section in document.sections:
@@ -290,10 +321,29 @@ def build_docx() -> None:
 
     contact = document.add_paragraph()
     contact.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r = contact.add_run(
-        "anannyaraipaul@gmail.com | linkedin.com/in/annyarp | github.com/anannyarp12"
+    add_hyperlink(
+        contact,
+        "anannyaraipaul@gmail.com",
+        "mailto:anannyaraipaul@gmail.com",
+        size=10,
+        color=(51, 51, 51),
     )
-    set_run_font(r, size=10, color=(51, 51, 51))
+    sep1 = contact.add_run(" | ")
+    set_run_font(sep1, size=10, color=(51, 51, 51))
+    add_hyperlink(
+        contact,
+        "linkedin.com/in/annyarp",
+        "https://www.linkedin.com/in/annyarp",
+        size=10,
+    )
+    sep2 = contact.add_run(" | ")
+    set_run_font(sep2, size=10, color=(51, 51, 51))
+    add_hyperlink(
+        contact,
+        "github.com/anannyarp12",
+        "https://github.com/anannyarp12",
+        size=10,
+    )
     contact.paragraph_format.space_after = Pt(4)
     add_horizontal_line(contact)
 
@@ -397,8 +447,6 @@ def build_docx() -> None:
         "Coursework: Probability, Regression, Hypothesis Testing, Multivariate Analysis, "
         "Time Series, Design of Experiments, Statistical Quality Control, Exploratory Data Analysis"
     )
-    bold_line("St. Joseph's High School — ISC Class XII (2021)")
-    body("English, Mathematics, Physics, Chemistry | Percentage: 74%")
 
     section_heading("CERTIFICATIONS & LEARNING")
     bullet("IBM – Introduction to Data Analytics")
