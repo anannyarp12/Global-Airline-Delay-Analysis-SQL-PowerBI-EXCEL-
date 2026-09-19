@@ -1,7 +1,6 @@
 #  Airline Delay Analysis — SQL, Excel & Power BI
 
-**What makes an airline delay problem interesting?**  
-Not just knowing that flights are delayed — but understanding **which carriers experience longer delays, whether flight volume is related to delay, and what the data actually tells us about airline operations.**
+ Not just knowing that flights are delayed — but understanding **which carriers experience longer delays, whether flight volume is related to delay, and what the data actually tells us about airline operations.**
 
 This project is an end-to-end analysis of approximately **1.9 million U.S. flight records from 2008**, covering 20 airline carriers.
 
